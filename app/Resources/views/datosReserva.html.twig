@@ -1,0 +1,12 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title %} Reserva | Bike In Bed {% endblock %}
+{% block id 'reserva' %}
+
+{% block article %}   
+    pagina de reserva
+{#    con el attr le indicamos que descative la validacion de html5 para el formulario  #}
+    {{ form(formulario, {'attr': {'novalidate': 'novalidate'}}) }}
+{% endblock %}
+
+

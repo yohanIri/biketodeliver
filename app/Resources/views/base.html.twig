@@ -1,0 +1,20 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body id="{% block id '' %}"><div id="contenedor">
+    {% block body %}{% endblock %}
+    <footer>
+        &copy; {{ 'now'|date('Y') }} - Cupon
+        <a href="{{ path('pagina',{ nombrePagina: 'ayuda'}) }}">Ayuda</a>
+        <a href="#">Contacto</a>
+        <a href="#">Avisos legales & Coockies</a>
+        <a href="#">Sobre nosotros</a>
+    </footer>
+    {% block javascripts %}{% endblock %}
+</div></body>
+</html>
