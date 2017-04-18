@@ -52,6 +52,12 @@ class ReservaType extends AbstractType {
                     'max' => 2
                 )
             ))
+            ->add('sillitaNene', IntegerType::class, array('mapped' => false,
+                'attr' => array(
+                    'min' => 1,
+                    'max' => 5
+                )
+            ))
             ->add('siguiente', SubmitType::class);
         ; 
     }
