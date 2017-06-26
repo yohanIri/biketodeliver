@@ -1,20 +1,43 @@
 {# empty Twig template #}
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{% block title %}{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body id="{% block id '' %}"><div id="contenedor">
-    {% block body %}{% endblock %}
-    <footer>
-        &copy; {{ 'now'|date('Y') }} - Cupon
-        <a href="{{ path('pagina',{ nombrePagina: 'ayuda'}) }}">Ayuda</a>
-        <a href="#">Contacto</a>
-        <a href="#">Avisos legales & Coockies</a>
-        <a href="#">Sobre nosotros</a>
-    </footer>
-    {% block javascripts %}{% endblock %}
-</div></body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>{% block title '' %}</title>
+        <meta name="description" content="{% block description '' %}" />
+	<meta name="Keywords" content="{% block keywords '' %}" />
+        <meta name="robots" content="index, follow" />
+        <meta name="organization" content="Bike To Deliver" />
+	<link rel="canonical" href="{% block canonical ''%}" />
+        <link href="https://plus.google.com/bikeToDeliver" rel="publisher" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body id="{% block id '' %}">
+        <div id="container">
+            <header>
+                <a href="{{ url('home') }}">
+                    <img alt="Logo" src="{{ asset('images/logo.jpg') }}" width="100px" height="100px">
+                </a>
+                <h1><a href="{{ url('home') }}">Bike In Bed</a></h1>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url('datosReserva') }}">reserva</a></li>
+                        <li><a href="{{ url('pagina',{ nombrePagina: 'tarifas'}) }}">tarifas</a></li>
+                        <li><a href="{{ url('pagina',{ nombrePagina: 'tour'}) }}">tour</a></li>
+                    </ul>
+                </nav>
+            </header>
+            {% block body %}{% endblock %}
+            <footer>
+                &copy; {{ 'now'|date('Y') }} - Bike To Deliver
+                <a href="{{ path('pagina',{ nombrePagina: 'ayuda'}) }}">Ayuda</a>
+                <a href="#">Contacto</a>
+                <a href="#">Avisos legales & Coockies</a>
+                <a href="#">Sobre nosotros</a>
+            </footer>
+            {% block javascripts %}{% endblock %}
+        </div>
+    </body>
 </html>

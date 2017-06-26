@@ -25,11 +25,11 @@ class Accesorio{
     protected $restricciones;
     /** @ORM\Column(type="datetime")*/
     protected $fechaAlta;
-    /** @ORM\Column(type="datetime")*/
+    /** @ORM\Column(type="datetime", nullable=TRUE)*/
     protected $fechaBaja;
     /** @ORM\Column(type="float", precision=6, scale=2) */
     protected $precioCompra;
-    /** @ORM\Column(type="float", precision=6, scale=2) */
+    /** @ORM\Column(type="float", precision=6, scale=2, nullable=TRUE) */
     protected $precioVenta;
 
     /**

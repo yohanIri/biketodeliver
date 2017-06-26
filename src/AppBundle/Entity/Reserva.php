@@ -34,7 +34,9 @@ class Reserva{
      * @Assert\DateTime()
      */
     protected $fechaRecogida;
-    /** @ORM\Column(type="text", nullable=true) */
+    /** @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank()
+     */
     protected $direccionDeEntrega;
     /** @ORM\Column(type="text") 
      * @Assert\NotBlank()
@@ -42,16 +44,18 @@ class Reserva{
     protected $direccionDeRecogida;
     /** @ORM\Column(type="integer") */
     protected $numeroBicis;
-    /** @ORM\Column(type="boolean") */
+    /** @ORM\Column(type="boolean",nullable=TRUE) */
     protected $seguroRobo;
+    /** @ORM\Column(type="boolean",nullable=TRUE) */
+    protected $seguroLLuvia;
     /** @ORM\Column(type="boolean") */
     protected $aceptarContratDeUso;
     /** @ORM\Column(type="string", length=30) */
     protected $tipoDePago;
     /** @ORM\Column(type="float", precision=6, scale=2) */
-    protected $precoTotal;
+    protected $precioTotal;
     /**
-     * @ORM\ManyToMany(targetEntity="ReservaEstadoReserva")
+     * @ORM\ManyToMany(targetEntity="ReservaEstadoReserva", cascade={"persist"})
      * @ORM\JoinTable(name="reserva_reserva_estado_reserva",
      *      joinColumns={@ORM\JoinColumn(name="reserva_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="reserva_estado_reserva_id", referencedColumnName="id", unique=true)}
@@ -64,7 +68,7 @@ class Reserva{
     
     
     /** @ORM\OneToOne(targetEntity="BicicletaReserva") */
-    protected $reservaBicicleta;
+    protected $biclcetaReserva;
     /**
      * @ORM\ManyToMany(targetEntity="ReservaTour")
      * @ORM\JoinTable(name="reserva_reserva_tour",
@@ -113,6 +117,7 @@ class Reserva{
     {
         $this->reservaEstado = new \Doctrine\Common\Collections\ArrayCollection();
         $this->reservaTour = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fechaCreacion = new  \DateTime();
     }
 
     /**
@@ -333,29 +338,6 @@ class Reserva{
     }
 
     /**
-     * Set precoTotal
-     *
-     * @param float $precoTotal
-     * @return Reserva
-     */
-    public function setPrecoTotal($precoTotal)
-    {
-        $this->precoTotal = $precoTotal;
-
-        return $this;
-    }
-
-    /**
-     * Get precoTotal
-     *
-     * @return float 
-     */
-    public function getPrecoTotal()
-    {
-        return $this->precoTotal;
-    }
-
-    /**
      * Add reservaEstado
      *
      * @param \AppBundle\Entity\ReservaEstadoReserva $reservaEstado
@@ -442,5 +424,74 @@ class Reserva{
     public function getReservaTour()
     {
         return $this->reservaTour;
+    }
+
+    /**
+     * Set biclcetaReserva
+     *
+     * @param \AppBundle\Entity\BicicletaReserva $biclcetaReserva
+     * @return Reserva
+     */
+    public function setBiclcetaReserva(\AppBundle\Entity\BicicletaReserva $biclcetaReserva = null)
+    {
+        $this->biclcetaReserva = $biclcetaReserva;
+
+        return $this;
+    }
+
+    /**
+     * Get biclcetaReserva
+     *
+     * @return \AppBundle\Entity\BicicletaReserva 
+     */
+    public function getBiclcetaReserva()
+    {
+        return $this->biclcetaReserva;
+    }
+
+    /**
+     * Set precioTotal
+     *
+     * @param float $precioTotal
+     * @return Reserva
+     */
+    public function setPrecioTotal($precioTotal)
+    {
+        $this->precioTotal = $precioTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get precioTotal
+     *
+     * @return float 
+     */
+    public function getPrecioTotal()
+    {
+        return $this->precioTotal;
+    }
+
+    /**
+     * Set seguroLLuvia
+     *
+     * @param boolean $seguroLLuvia
+     * @return Reserva
+     */
+    public function setSeguroLLuvia($seguroLLuvia)
+    {
+        $this->seguroLLuvia = $seguroLLuvia;
+
+        return $this;
+    }
+
+    /**
+     * Get seguroLLuvia
+     *
+     * @return boolean 
+     */
+    public function getSeguroLLuvia()
+    {
+        return $this->seguroLLuvia;
     }
 }

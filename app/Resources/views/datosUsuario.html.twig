@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva | Bike In Bed{% endblock %}
+{% block description %}Esto es la reserva{% endblock %}
+{% block keywords %}bicicleta, barcelona, alquilar{% endblock %}
+{% block canonical %}{{ url('datosReserva') }}{% endblock %}
+
+{% block id 'reserva' %}
+
+{% block body %}
+    <section>
+        reserva
+    {#    con el attr le indicamos que descative la validacion de html5 para el formulario  #}
+    {#    {{ form(formulario, {'attr': {'novalidate': 'novalidate'}}) }}#}
+
+        {{ form_start(formulario, {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_errors(formulario) }}
+                <fiedset>
+                    <legend>Datos Usuario</legend>
+
+                    <div>
+                        {{ form_label(formulario.nombre) }}                    
+                        <div class="error">{{ form_errors(formulario.nombre) }} </div>                   
+                        <span> {{ form_widget(formulario.nombre) }} </div>
+                    </div>
+                    {{ form_row(formulario.apellido) }}
+                    {{ form_row(formulario.dNIPassaporte) }}
+                    {{ form_row(formulario.telefono) }}
+                    {{ form_row(formulario.email) }}
+                </fiedset>
+       {{ form_end(formulario) }}
+    </section>
+{% endblock %}
+
+

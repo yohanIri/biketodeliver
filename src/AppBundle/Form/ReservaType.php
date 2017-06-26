@@ -22,55 +22,48 @@ class ReservaType extends AbstractType {
             ->add('fechaRecogida', DateTimeType::class)
             ->add('direccionDeEntrega', TextType::class)
             ->add('direccionDeRecogida', TextType::class)
-            ->add('clasicBike', IntegerType::class, array('mapped' => false,
-                'attr' => array(
+            ->add('clasicBike', IntegerType::class, array('attr' => array(
                     'min' => 1,
                     'max' => 15
                 )
             ))
-            ->add('e-bike', IntegerType::class, array('mapped' => false,
-                'attr' => array(
+            ->add('ebike', IntegerType::class, array('attr' => array(
                     'min' => 1,
                     'max' => 6
                 )
             ))
-            ->add('biciDe110A125Cm', IntegerType::class, array('mapped' => false,
-                'attr' => array(
+            ->add('biciDe110A125Cm', IntegerType::class, array('attr' => array(
                     'min' => 1,
                     'max' => 2
                 )
             ))
-            ->add('biciDe125A135Cm', IntegerType::class, array('mapped' => false,
-                'attr' => array(
+            ->add('biciDe125A135Cm', IntegerType::class, array('attr' => array(
                     'min' => 1,
                     'max' => 2
                 )
             ))
-            ->add('biciDe135A150Cm', IntegerType::class, array('mapped' => false,
-                'attr' => array(
+            ->add('biciDe135A150Cm', IntegerType::class, array('attr' => array(
                     'min' => 1,
                     'max' => 2
                 )
             ))
-            ->add('sillitaNene', IntegerType::class, array('mapped' => false,
-                'attr' => array(
+            ->add('sillitaNene', IntegerType::class, array('attr' => array(
                     'min' => 1,
                     'max' => 5
                 )
             ))
             ->add('siguiente', SubmitType::class);
-        ; 
     }
         
-    public function configureOptions(OptionsResolver $resolver) 
-    {
-        $resolver->setDefaults(array(
-                'data_class' => 'AppBundle\Entity\Reserva',
-        ));
-    }
-    
-    public function getBlockPrefix()
-    {
-        return 'reserva';
-    }
+//    public function configureOptions(OptionsResolver $resolver) 
+//    {
+//        $resolver->setDefaults(array(
+//                'data_class' => 'AppBundle\Entity\Reserva',
+//        ));
+//    }
+//    
+//    public function getBlockPrefix()
+//    {
+//        return 'reserva';
+//    }
 }

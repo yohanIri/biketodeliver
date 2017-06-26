@@ -18,10 +18,17 @@ class ReservaEstadoReserva {
      */
     protected $id;
     /** @ORM\Column(type="datetime") */
-    protected $Fecha;
+    protected $fecha;
     /** @ORM\ManyToOne(targetEntity="EstadoReserva") */
     protected $estadoReserva;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fecha = new  \DateTime();
+    }
     /**
      * Get id
      *

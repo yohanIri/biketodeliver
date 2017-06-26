@@ -1,13 +1,17 @@
-{% extends 'frontend.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %} Tours | Bike In Bed {% endblock %}
+{% block title %}Tours | Bike In Bed{% endblock %}
+{% block description %}Esto son las tours{% endblock %}
+{% block keywords %}bicicleta, barcelona, alquilar{% endblock %}
+{% block canonical %}{{ url('pagina',{ nombrePagina: 'tours'}) }}{% endblock %}
+
 {% block id 'tours' %}
 
-{% block article %}   
-    pagina de tour
+{% block body %}
+    <section>
+        pagina Tours
+    </section>
 {% endblock %}
-
-
 
 
 

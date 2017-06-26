@@ -1,8 +1,14 @@
-{% extends 'frontend.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %} Home | Bike In Bed {% endblock %}
+{% block title %}Home | Bike In Bed{% endblock %}
+{% block description %}Esto es la home{% endblock %}
+{% block keywords %}bicicleta, barcelona, alquilar{% endblock %}
+{% block canonical %}{{ url('home') }}{% endblock %}
+
 {% block id 'home' %}
 
-{% block article %}
-    pagina Home
+{% block body %}
+    <section>
+        pagina Home
+    </section>
 {% endblock %}
